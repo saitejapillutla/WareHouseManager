@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "958643020356",
+    "project_id": "warehouse-capstone-project",
+    "storage_bucket": "warehouse-capstone-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958643020356:android:cacb9d55d42e8f73ffd211",
+        "android_client_info": {
+          "package_name": "com.saitejapillutla.warehouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958643020356-mlc7s4mvc442a0u9t3dfp3s5h69n4etp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKujNZi18_KlO7xzEmdog87LvMHb2vYkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958643020356-mlc7s4mvc442a0u9t3dfp3s5h69n4etp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
