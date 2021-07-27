@@ -43,8 +43,8 @@
                 android:layout_marginEnd="16sp"
                 android:layout_marginBottom="64dp"
                 android:layout_toStartOf="@+id/verifyqr"
-                android:inputType="textPersonName"
-                android:text="Enter Code Manually here" />
+                android:hint="Enter Code Manually here"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/text_view"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="140dp"
-                android:text="QR Code Reader Android\nusing ML Kit"
+                android:text="Scan the QR Code"
                 android:textAlignment="center"
                 android:textColor="#FAFAFA"
                 android:textSize="24sp" />

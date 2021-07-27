@@ -181,6 +181,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/addingLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -191,7 +192,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/neumorphCardView54"
+                    app:layout_constraintStart_toEndOf="@+id/addModel"
                     app:layout_constraintTop_toTopOf="parent"
                     app:neumorph_backgroundColor="#00008D0E"
                     app:neumorph_shadowColorDark="#75616161"
@@ -233,7 +234,7 @@
                 </soup.neumorphism.NeumorphCardView>
 
                 <soup.neumorphism.NeumorphCardView
-                    android:id="@+id/neumorphCardView54"
+                    android:id="@+id/addModel"
                     style="@style/Widget.Neumorph.CardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

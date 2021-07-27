@@ -56,7 +56,7 @@ class qrscan : AppCompatActivity() {
 
             when(qrinput.length){
                 10->{
-                    val intent =Intent(this,modelDetails::class.java)
+                    val intent =Intent(this,createModel::class.java)
                     intent.putExtra("orderID",qrinput)
                     intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
@@ -68,7 +68,7 @@ class qrscan : AppCompatActivity() {
                     startActivity(intent)
 
                 }
-                12->{ val intent =Intent(this,modelDetails::class.java)
+                12->{ val intent =Intent(this,orderDetails::class.java)
                     intent.putExtra("orderID",qrinput)
                     intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
@@ -81,7 +81,6 @@ class qrscan : AppCompatActivity() {
             }
         }
     }
-
     fun qrtypeSelectDialog(){
         val singleItems = arrayOf("Item QR Code", "Model QR Code", "Order QR Code")
 

@@ -166,6 +166,7 @@ class MainActivity : AppCompatActivity() {
                                     "uid" to result.data?.getValue("uid").toString(),
                                     "photoURL" to result.data?.getValue("photoURL").toString(),
                                     "status" to result.data?.getValue("status").toString(),
+                                    "role" to result.data?.getValue("role").toString(),
                         )
                         Log.d(TAG, "Active")
                         val intent=Intent(this,HomeActivity::class.java)

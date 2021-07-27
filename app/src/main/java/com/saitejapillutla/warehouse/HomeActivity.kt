@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home.*
@@ -76,6 +77,18 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
 
         qrscanBtn.setOnClickListener {
             val intent= Intent(this,qrscan::class.java)
+            startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
+
+            Log.d(TAG,userdata.toString())
+        if (userdata.getValue("role")!="Administrator"){
+            addingLayout.visibility=View.GONE
+        }
+        addModel.setOnClickListener {
+            val intent= Intent(this,createModel::class.java)
+            intent.putExtra("uniqID",userdata.getValue("uniqueID").toString())
+            intent.putExtra("uid",userdata.getValue("uid").toString())
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }

@@ -3,4 +3,13 @@
     <string name="firebase_client_id">958643020356-mlc7s4mvc442a0u9t3dfp3s5h69n4etp.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="category">
+        <item>Electronics</item>
+        <item>Grocery</item>
+        <item>Fashion</item>
+        <item>Home Decor</item>
+        <item>Essentials</item>
+
+    </string-array>
 </resources>
