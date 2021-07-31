@@ -32,18 +32,13 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-
-
         var  userdata  = intent.getSerializableExtra("userdata") as Map<String,Any>
         Log.d(TAG, userdata.get("fullname") as String)
-
         profileBtn.setOnClickListener {
             val intent= Intent(this,ProfileActivity::class.java)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
-
         userdata=  intent.getSerializableExtra("userdata") as Map<String, Any>
         uniqueID=userdata.getValue("uniqueID").toString()
         membersBtn.setOnClickListener {
@@ -74,13 +69,11 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
-
         qrscanBtn.setOnClickListener {
             val intent= Intent(this,qrscan::class.java)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
-
             Log.d(TAG,userdata.toString())
         if (userdata.getValue("role")!="Administrator"){
             addingLayout.visibility=View.GONE

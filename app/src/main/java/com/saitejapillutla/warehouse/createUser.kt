@@ -107,7 +107,9 @@ class createUser : AppCompatActivity() {
             var firstWrite = FirebaseFirestore.getInstance()
             firstWrite.collection("users").document( user.uid.toString())
                 .set(data as Map<String, Any>).addOnSuccessListener {
-                    FirebaseFirestore.getInstance().collection("warehouses").document(uniqueID.text.toString()).collection("requests").document(user.uid.toString() ).set(requestData as Map<String, Any> )
+                    FirebaseFirestore.getInstance().collection("warehouses")
+                        .document(uniqueID.text.toString()).collection("requests")
+                        .document(user.uid.toString() ).set(requestData as Map<String, Any> )
                         .addOnSuccessListener {
                             Log.d(TAG, "user updated ${user.displayName}")
                             showDialog()
