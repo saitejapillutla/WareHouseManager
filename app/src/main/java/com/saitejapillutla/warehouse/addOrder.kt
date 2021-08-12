@@ -68,14 +68,8 @@ class addOrder : AppCompatActivity() {
                 "orders" to orders.toString(),
                 "address" to address.toString()
             )
-//            val ref =FirebaseFirestore.getInstance()
             val uniqUID=intent.getCharSequenceExtra("uniqueID")
             Log.d(TAG, uniqUID as String)
-//            ref.collection("warehouses").document(uniqUID as String)
-//                .collection("Orders").document(""+Calendar.getInstance().timeInMillis)
-//                .set(data  as Map<String, Any>).addOnSuccessListener {
-//                    Log.d(TAG,"Order Created asssssssssssss")
-//                }
             FirebaseFirestore.getInstance().collection("warehouses")
                 .document(uniqUID.toString())
                 .collection("Orders")
