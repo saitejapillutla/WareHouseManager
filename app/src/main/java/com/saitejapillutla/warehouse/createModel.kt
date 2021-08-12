@@ -101,8 +101,16 @@ companion object{
                     "company name" to CompanyName.text.toString(),
                 "company model" to CompanyModel.text.toString(),
                     "modelID" to textView42.text.toString(),
+                    "unitsAvailable" to itemsAvailable.text.toString(),
+                    "time" to ""+Calendar.getInstance().timeInMillis,
                 )
 
+                val notification= hashMapOf(
+                    "category" to "modelCreated",
+                    "modelID" to textView42.text.toString(),
+                    "model name" to ModelName.text.toString(),
+                "type" to "notification"
+                )
 
                 val ref =FirebaseFirestore.getInstance()
                 var warehouseID =intent.getCharSequenceExtra("uniqID").toString();
@@ -111,14 +119,18 @@ companion object{
                     .collection("models")
                     .document(modelID)
                     .set(data  as Map<String, Any> ).addOnSuccessListener {
+                        ref.collection("warehouses").document(warehouseID as String)
+                            .collection("notifications")
+                            .document(""+Calendar.getInstance().timeInMillis)
+                            .set(notification  as Map<String, Any> ).addOnSuccessListener {
+
+                            }
                         val intent = Intent(this, allModels::class.java)
                         intent.putExtra("updated",1)
                         intent.putExtra("uniqID",warehouseID)
                         startActivity(intent)
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                         //finish()
-
-
 
                     }
             }

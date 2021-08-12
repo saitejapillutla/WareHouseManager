@@ -9,16 +9,14 @@
     android:orientation="vertical"
     app:layout_constraintEnd_toEndOf="parent">
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="100sp"
-        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_url="https://lottiefiles.com/67908-duck" />
-
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/okdone" />
     <TextView
         android:id="@+id/textView24"
         android:layout_width="match_parent"

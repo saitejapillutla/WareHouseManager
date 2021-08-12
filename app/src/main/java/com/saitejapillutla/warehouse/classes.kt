@@ -2,26 +2,20 @@ package com.saitejapillutla.warehouse
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pacific.adapter.AdapterViewHolder
 import com.pacific.adapter.SimpleRecyclerItem
-import com.saitejapillutla.warehouse.Members.Companion.removeRecyclerItem
-import kotlinx.android.synthetic.main.activity_members.*
 import kotlinx.android.synthetic.main.member_details.view.*
 import kotlinx.android.synthetic.main.member_requests.view.*
 import kotlinx.android.synthetic.main.model_adapter.view.*
-import java.sql.Time
 import java.time.Instant
-import java.time.Instant.now
-import java.time.LocalDateTime.now
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 class classes {
 }
@@ -213,13 +207,15 @@ class request (val name: String,val email: String,val photoURL: String,val userI
 
 }
 
-
-
-class modelID(val category: String,
-              val companyModel: String,
-              val companyName: String,
-              val modelName: String,
-              val modelID: String): SimpleRecyclerItem(){
+class modelID(
+    val category: String,
+    val companyModel: String,
+    val companyName: String,
+    val modelName: String,
+    val modelID: String,
+    val wareHouseID:String,
+    val unitsAvailable: String,
+): SimpleRecyclerItem(){
     override fun bind(holder: AdapterViewHolder) {
         //this works
     }
@@ -230,11 +226,23 @@ class modelID(val category: String,
     override fun unbind(holder: AdapterViewHolder) {
         super.unbind(holder)
     }
-
     override fun onViewAttachedToWindow(holder: AdapterViewHolder) {
         super.onViewAttachedToWindow(holder)
         val v=holder.itemView
         v.modelname.text=modelName
         v.modelid.text="ID : "+modelID
+        v.category.text=category
+       // v.unitsAvailable.setText(unitsAvailable)
+            v.model_adapter_layout.setOnClickListener {
+                val intent=Intent(v.context,modelDetails::class.java)
+                intent.putExtra("category",category)
+                intent.putExtra("companyModel",companyModel)
+                intent.putExtra("companyName",companyName)
+                intent.putExtra("modelName",modelName)
+                intent.putExtra("modelID",modelID)
+                intent.putExtra("wareHouseID",unitsAvailable)
+                intent.putExtra("unitsAvailable",unitsAvailable)
+                v.context.startActivity(intent)
+            }
     }
 }

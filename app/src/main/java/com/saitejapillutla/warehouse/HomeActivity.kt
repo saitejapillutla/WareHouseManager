@@ -22,7 +22,6 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
 
         lateinit var userdata :HashMap<String,Any>
     }
-
     var uniqueID=""
     var name=""
     var email=""
@@ -57,11 +56,13 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
             }
             launch(Dispatchers.Main) {
                 getrequestCount()
-
             }
         }
-
-
+        if((userdata.getValue("role").toString()=="Administrator")||(userdata.getValue("role").toString()=="Employee")){
+            addingLayout.visibility=View.VISIBLE
+        }else{
+            addingLayout.visibility=View.GONE
+        }
         card_requests.setOnClickListener {
             val intent= Intent(this,Members::class.java)
             intent.putExtra("uniqID",userdata.getValue("uniqueID").toString())
@@ -75,9 +76,9 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
             Log.d(TAG,userdata.toString())
-        if (userdata.getValue("role")!="Administrator"){
-            addingLayout.visibility=View.GONE
-        }
+//        if (userdata.getValue("role")!="Administrator"){
+//            addingLayout.visibility=View.GONE
+//        }
         addModel.setOnClickListener {
             val intent= Intent(this,createModel::class.java)
             intent.putExtra("uniqID",userdata.getValue("uniqueID").toString())
@@ -85,13 +86,25 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
-    }
+        allmodelsopen.setOnClickListener {
+            val intent= Intent(this,com.saitejapillutla.warehouse.allModels::class.java)
+            intent.putExtra("uniqID",userdata.getValue("uniqueID").toString())
+            intent.putExtra("uid",userdata.getValue("uid").toString())
+            startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
 
+        addOrder.setOnClickListener {
+            Log.d(TAG,userdata.getValue("uniqueID").toString())
+            val intent = Intent(this,com.saitejapillutla.warehouse.addOrder::class.java)
+            intent.putExtra("uniqueID",userdata.getValue("uniqueID").toString())
+            startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
+    }
     override fun onStart() {
         super.onStart()
-
     }
-
     suspend fun getrequestCount(){
                 var requestref = FirebaseFirestore.getInstance()
         Log.d(TAG, "${uniqueID} => ${uniqueID}")
@@ -104,10 +117,7 @@ class HomeActivity : AppCompatActivity(), CoroutineScope {
             }.addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
-
-
     }
-
     override fun onDestroy() {
         job.cancel()
         super.onDestroy()

@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="match_parent"
-        android:layout_height="100sp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/okdone"
-        />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/qrscanBtn"
         android:layout_width="wrap_content"
@@ -62,6 +53,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_group" />
 
+
+    <ImageView
+        android:id="@+id/addOrder"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_order" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -186,13 +187,13 @@
                 android:layout_height="match_parent">
 
                 <soup.neumorphism.NeumorphCardView
-                    android:id="@+id/neumorphCardView3"
+                    android:id="@+id/addModel"
                     style="@style/Widget.Neumorph.CardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/addModel"
+                    app:layout_constraintStart_toEndOf="@+id/allModels"
                     app:layout_constraintTop_toTopOf="parent"
                     app:neumorph_backgroundColor="#00008D0E"
                     app:neumorph_shadowColorDark="#75616161"
@@ -234,11 +235,11 @@
                 </soup.neumorphism.NeumorphCardView>
 
                 <soup.neumorphism.NeumorphCardView
-                    android:id="@+id/addModel"
+                    android:id="@+id/allModels"
                     style="@style/Widget.Neumorph.CardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@+id/neumorphCardView3"
+                    app:layout_constraintEnd_toStartOf="@+id/addModel"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -248,6 +249,7 @@
                     app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/allmodelsopen"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/outlinebutton"
@@ -268,14 +270,14 @@
                                 android:id="@+id/imageView777"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/createitem" />
+                                app:srcCompat="@drawable/items" />
 
                             <TextView
                                 android:id="@+id/textView37702"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/quicksand_bold"
-                                android:text="Add Model"
+                                android:text="Models"
                                 android:textSize="16sp" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>

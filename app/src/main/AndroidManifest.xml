@@ -15,9 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WareHouse"
         android:usesCleartextTraffic="true">
-        <activity android:name=".allModels"></activity>
-        <activity android:name=".createModel"
-            android:noHistory="true"/>
+        <activity android:name=".addOrder"></activity>
+        <activity android:name=".allModels" />
+        <activity
+            android:name=".createModel"
+            android:noHistory="true" />
         <activity android:name=".itemdetails" />
         <activity android:name=".orderDetails" />
         <activity android:name=".modelDetails" />
