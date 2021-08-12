@@ -38,7 +38,6 @@ class addOrder : AppCompatActivity() {
                     cat =parent.getItemAtPosition(position).toString()
                 }
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 cat ="Nothing Selected"
             }
