@@ -1,17 +1,14 @@
 package com.saitejapillutla.warehouse
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_order.*
-import kotlinx.android.synthetic.main.activity_create_model.*
-import kotlinx.android.synthetic.main.activity_create_model.categoryselected
-import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
 class addOrder : AppCompatActivity() {
@@ -58,15 +55,15 @@ class addOrder : AppCompatActivity() {
         addOrderBtn.setOnClickListener {
             if (cat!="Nothing Selected"){
             val data = hashMapOf(
-                "category" to cat.toString(),
+                "category" to cat,
                 "modelNo" to modelNo.toString(),
                 "quantity" to quantity.toString(),
                 "warehouse" to warehouse.toString(),
                 "deliveryhouse" to deliveryhouse.toString(),
-                "email" to email.toString(),
-                "phone" to phone.toString(),
-                "orders" to orders.toString(),
-                "address" to address.toString()
+                "email" to email,
+                "phone" to phone,
+                "orders" to orders,
+                "address" to address
             )
             val uniqUID=intent.getCharSequenceExtra("uniqueID")
             Log.d(TAG, uniqUID as String)
