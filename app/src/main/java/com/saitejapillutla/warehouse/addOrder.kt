@@ -55,9 +55,7 @@ class addOrder : AppCompatActivity() {
                 "Dummy place\n" +
                 "Telephone : 1-800-123-4567\n" +
                 "Email : info@dummy.com"
-
         addOrderBtn.setOnClickListener {
-
             if (cat!="Nothing Selected"){
             val data = hashMapOf(
                 "category" to cat.toString(),
