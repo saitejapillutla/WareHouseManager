@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
-import com.saitejapillutla.warehouse.HomeActivity.Companion.userdata
 import java.lang.IndexOutOfBoundsException
 
 @androidx.camera.core.ExperimentalGetImage

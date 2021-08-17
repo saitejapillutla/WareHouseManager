@@ -10,6 +10,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pacific.adapter.AdapterViewHolder
 import com.pacific.adapter.SimpleRecyclerItem
+import kotlinx.android.synthetic.main.invoices_list_item.view.*
 import kotlinx.android.synthetic.main.member_details.view.*
 import kotlinx.android.synthetic.main.member_requests.view.*
 import kotlinx.android.synthetic.main.model_adapter.view.*
@@ -240,9 +241,38 @@ class modelID(
                 intent.putExtra("companyName",companyName)
                 intent.putExtra("modelName",modelName)
                 intent.putExtra("modelID",modelID)
-                intent.putExtra("wareHouseID",unitsAvailable)
+                intent.putExtra("wareHouseID",wareHouseID)
                 intent.putExtra("unitsAvailable",unitsAvailable)
                 v.context.startActivity(intent)
             }
     }
+}
+
+class invoiceListAdapter(val modelID: String,
+                         val wareHouseID:String,
+                         val uid:String,
+                         val modelName: String):SimpleRecyclerItem(){
+    override fun bind(holder: AdapterViewHolder) {
+        //This Works
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.invoices_list_item
+    }
+
+    override fun onViewDetachedFromWindow(holder: AdapterViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        val v=holder.itemView
+        v.itemName.text = modelName
+        v.invoice_modelId.text="MODEL ID : "+modelID;
+
+        v.invoice_item_constraint.setOnClickListener {
+            val intent=Intent(v.context,GenerateInvoice::class.java)
+            intent.putExtra("wareHouseID",wareHouseID)
+            intent.putExtra("uid",wareHouseID)
+            v.context.startActivity(intent)
+        }
+
+    }
+
 }

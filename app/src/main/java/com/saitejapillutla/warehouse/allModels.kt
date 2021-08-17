@@ -69,8 +69,6 @@ var size=9
            .orderBy("modelID", Query.Direction.DESCENDING).limit(50).get().addOnSuccessListener {
                 size=it.size()
                for (document in it) {
-                   val intent = Intent(this,modelDetails::class.java)
-                   intent.putExtra("modelID",document.data.getValue("modelID") as String)
                    val modelDetails =modelID(
                        document.data.getValue("category") as String,
                        document.data.getValue("company model") as String,

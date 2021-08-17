@@ -15,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WareHouse"
         android:usesCleartextTraffic="true">
-        <activity android:name=".addOrder"></activity>
+        <activity
+            android:name=".GenerateInvoice"
+            android:exported="true" />
+        <activity
+            android:name=".InvoicesList"
+            android:exported="true" />
+        <activity android:name=".addOrder" />
         <activity android:name=".allModels" />
         <activity
             android:name=".createModel"

@@ -1,5 +1,6 @@
 package com.saitejapillutla.warehouse
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -7,8 +8,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_order.*
+import kotlinx.android.synthetic.main.activity_all_models.*
 import java.util.*
 
 class addOrder : AppCompatActivity() {
@@ -23,21 +26,11 @@ class addOrder : AppCompatActivity() {
         val arrayAdapter= ArrayAdapter(this,R.layout.category_drop_down_item,category)
         ordercategoryselected.setAdapter(arrayAdapter)
 
-        var cat =""
-        ordercategoryselected.onItemSelectedListener =object :AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (parent != null) {
-                    cat =parent.getItemAtPosition(position).toString()
-                }
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                cat ="Nothing Selected"
-            }
+        var cat ="A"
+
+        ordercategoryselected.setOnItemClickListener { parent, view, position, id ->
+            Log.d(TAG,"Current Position : ${position} ")
+            cat =category[position]
         }
         val modelNo=modelNo.text
         val quantity=quantity.text
@@ -45,7 +38,7 @@ class addOrder : AppCompatActivity() {
         val deliveryhouse=deliveryhouse.text
         val email="info@dummy.com"
         val phone="1-800-123-4567"
-        val orders="234567"
+        val orders="2"
         val address="Dummy Address\n" +
                 "Lorem Ipsum Sit Amet\n" +
                 "Dummy Pin\n" +
@@ -53,7 +46,7 @@ class addOrder : AppCompatActivity() {
                 "Telephone : 1-800-123-4567\n" +
                 "Email : info@dummy.com"
         addOrderBtn.setOnClickListener {
-            if (cat!="Nothing Selected"){
+            if (cat!="A"){
             val data = hashMapOf(
                 "category" to cat,
                 "modelNo" to modelNo.toString(),
@@ -63,7 +56,10 @@ class addOrder : AppCompatActivity() {
                 "email" to email,
                 "phone" to phone,
                 "orders" to orders,
-                "address" to address
+                "address" to address,
+                "status" to "placed",
+                "uid" to Calendar.getInstance().timeInMillis.toString(),
+                "currentPoint" to warehouse.toString()
             )
             val uniqUID=intent.getCharSequenceExtra("uniqueID")
             Log.d(TAG, uniqUID as String)
@@ -73,11 +69,20 @@ class addOrder : AppCompatActivity() {
                 .document(Calendar.getInstance().timeInMillis.toString())
                 .set(data as Map<String, Any> )
                 .addOnSuccessListener {
-                    Log.d(TAG,"Order Created asssssssssssss")
+                    onBackPressed()
+//                    val intent =Intent(this,HomeActivity::class.java)
+//                    intent.putExtra("orderupdated",1)
+//                    startActivity(intent)
+//                    overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+
                 }
-        }else{  MaterialAlertDialogBuilder(this).setIcon(R.drawable.ic_baseline_error_outline_24).setTitle("Error").setMessage("Please Specify Order Category")  }
-
+        }else{
+            MaterialAlertDialogBuilder(this).setIcon(R.drawable.ic_baseline_error_outline_24)
+                .setTitle("Error").setMessage("Please Specify Order Category")
+                .show()}
         }
-
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
