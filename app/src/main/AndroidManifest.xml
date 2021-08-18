@@ -16,6 +16,15 @@
         android:theme="@style/Theme.WareHouse"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".shipOut"
+            android:exported="true" />
+        <activity
+            android:name=".tobeShipped"
+            android:exported="true" />
+        <activity
+            android:name=".invoiceQRGrenerator"
+            android:exported="true" />
+        <activity
             android:name=".GenerateInvoice"
             android:exported="true" />
         <activity

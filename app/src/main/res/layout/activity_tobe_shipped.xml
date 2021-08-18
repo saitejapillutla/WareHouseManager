@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InvoicesList">
+    tools:context=".tobeShipped">
 
     <TextView
         android:id="@+id/textView47"
@@ -13,7 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/quicksand_bold"
-        android:text="Items to be Invoiced"
+        android:text="Items to be Shipped"
         android:textColor="@color/purple_200"
         android:textSize="24sp"
         android:textStyle="bold"

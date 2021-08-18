@@ -6,8 +6,12 @@
         <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/drawable/ic__delete.xml" value="0.1501628664495114" />
         <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_all_models.xml" value="0.13958333333333334" />
         <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_create_model.xml" value="0.21" />
+        <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_generate_invoice.xml" value="0.25" />
         <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_home.xml" value="0.21" />
+        <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_invoice_qrgrenerator.xml" value="0.21" />
         <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_invoices_list.xml" value="0.25" />
+        <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_profile.xml" value="0.1361111111111111" />
+        <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/activity_tobe_shipped.xml" value="0.14144736842105263" />
         <entry key="..\:/datra/SAITEJA/WareHouse/app/src/main/res/layout/invoices_list_item.xml" value="0.25" />
       </map>
     </option>

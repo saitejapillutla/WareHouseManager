@@ -220,7 +220,6 @@ class modelID(
     override fun bind(holder: AdapterViewHolder) {
         //this works
     }
-
     override fun getLayout(): Int {
         return R.layout.model_adapter
     }
@@ -251,25 +250,62 @@ class modelID(
 class invoiceListAdapter(val modelID: String,
                          val wareHouseID:String,
                          val uid:String,
-                         val modelName: String):SimpleRecyclerItem(){
+                         val modelName: String,
+                         val category: String):SimpleRecyclerItem(){
     override fun bind(holder: AdapterViewHolder) {
         //This Works
     }
-
     override fun getLayout(): Int {
         return R.layout.invoices_list_item
     }
-
-    override fun onViewDetachedFromWindow(holder: AdapterViewHolder) {
-        super.onViewDetachedFromWindow(holder)
+    override fun unbind(holder: AdapterViewHolder) {
+        super.unbind(holder)
+    }
+    override fun onViewAttachedToWindow(holder: AdapterViewHolder) {
+        super.onViewAttachedToWindow(holder)
         val v=holder.itemView
+        //v.itemName.setText("dfghgfdsdfgh")
         v.itemName.text = modelName
+        v.category_invoice_item.text=category
         v.invoice_modelId.text="MODEL ID : "+modelID;
-
         v.invoice_item_constraint.setOnClickListener {
             val intent=Intent(v.context,GenerateInvoice::class.java)
             intent.putExtra("wareHouseID",wareHouseID)
-            intent.putExtra("uid",wareHouseID)
+            intent.putExtra("uid",uid)
+            intent.putExtra("modelID",modelID)
+            v.context.startActivity(intent)
+        }
+
+    }
+
+}
+
+class ShippingListAdapter(val modelID: String,
+                         val wareHouseID:String,
+                         val uid:String,
+                         val modelName: String,
+                         val category: String):SimpleRecyclerItem(){
+    override fun bind(holder: AdapterViewHolder) {
+        //This Works
+    }
+    override fun getLayout(): Int {
+        return R.layout.invoices_list_item
+    }
+    override fun unbind(holder: AdapterViewHolder) {
+        super.unbind(holder)
+    }
+    override fun onViewAttachedToWindow(holder: AdapterViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        val v=holder.itemView
+        //v.itemName.setText("dfghgfdsdfgh")
+        v.itemName.text = modelName
+        v.category_invoice_item.text=category
+        v.invoice_modelId.text="MODEL ID : "+modelID;
+        v.invoice_item_constraint.setOnClickListener {
+            val intent=Intent(v.context,GenerateInvoice::class.java)
+            intent.putExtra("wareHouseID",wareHouseID)
+            intent.putExtra("uid",uid)
+            intent.putExtra("modelID",modelID)
             v.context.startActivity(intent)
         }
 

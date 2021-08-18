@@ -38,7 +38,7 @@ class addOrder : AppCompatActivity() {
         val deliveryhouse=deliveryhouse.text
         val email="info@dummy.com"
         val phone="1-800-123-4567"
-        val orders="2"
+        val itemName="machine"
         val address="Dummy Address\n" +
                 "Lorem Ipsum Sit Amet\n" +
                 "Dummy Pin\n" +
@@ -46,6 +46,7 @@ class addOrder : AppCompatActivity() {
                 "Telephone : 1-800-123-4567\n" +
                 "Email : info@dummy.com"
         addOrderBtn.setOnClickListener {
+            val uid =Calendar.getInstance().timeInMillis.toString()
             if (cat!="A"){
             val data = hashMapOf(
                 "category" to cat,
@@ -55,10 +56,11 @@ class addOrder : AppCompatActivity() {
                 "deliveryhouse" to deliveryhouse.toString(),
                 "email" to email,
                 "phone" to phone,
-                "orders" to orders,
+                "itemName" to itemName,
                 "address" to address,
+                "pincode" to "543670",
                 "status" to "placed",
-                "uid" to Calendar.getInstance().timeInMillis.toString(),
+                "uid" to uid,
                 "currentPoint" to warehouse.toString()
             )
             val uniqUID=intent.getCharSequenceExtra("uniqueID")
@@ -66,7 +68,7 @@ class addOrder : AppCompatActivity() {
             FirebaseFirestore.getInstance().collection("warehouses")
                 .document(uniqUID.toString())
                 .collection("Orders")
-                .document(Calendar.getInstance().timeInMillis.toString())
+                .document(uid)
                 .set(data as Map<String, Any> )
                 .addOnSuccessListener {
                     onBackPressed()
